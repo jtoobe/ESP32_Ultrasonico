@@ -1,7 +1,7 @@
 /*
- *  conectar 2 sensores a un ESP32
- * 
- */
+    conectar 2 sensores a un ESP32
+
+*/
 
 
 
@@ -19,8 +19,8 @@ void setup() {
 }
 
 void loop() {
-  unsigned long duration1, distance1;
-  unsigned long duration2, distance2;
+  unsigned long duracion1, distancia1;
+  unsigned long duracion2, distancia2;
 
   // Medición con el primer sensor
   digitalWrite(TRIGGER_PIN_1, LOW);
@@ -28,8 +28,8 @@ void loop() {
   digitalWrite(TRIGGER_PIN_1, HIGH);
   delayMicroseconds(10);
   digitalWrite(TRIGGER_PIN_1, LOW);
-  duration1 = pulseIn(ECHO_PIN_1, HIGH);
-  distance1 = duration1 * 0.034 / 2;
+  duracion1 = pulseIn(ECHO_PIN_1, HIGH);
+  distancia1 = duracion1 / 59;
 
   // Medición con el segundo sensor
   digitalWrite(TRIGGER_PIN_2, LOW);
@@ -37,15 +37,15 @@ void loop() {
   digitalWrite(TRIGGER_PIN_2, HIGH);
   delayMicroseconds(10);
   digitalWrite(TRIGGER_PIN_2, LOW);
-  duration2 = pulseIn(ECHO_PIN_2, HIGH);
-  distance2 = duration2 * 0.034 / 2;
+  duracion2 = pulseIn(ECHO_PIN_2, HIGH);
+  distancia2 = duracion2 / 59;
 
   // Mostrar las lecturas en el monitor serie
   Serial.print("Sensor 1: ");
-  Serial.print(distance1);
+  Serial.print(distancia1);
   Serial.print(" cm   |   ");
   Serial.print("Sensor 2: ");
-  Serial.print(distance2);
+  Serial.print(distancia2);
   Serial.println(" cm");
 
   delay(1000); // Esperar un tiempo antes de realizar la próxima medición
